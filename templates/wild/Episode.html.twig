@@ -12,7 +12,7 @@
             <p>{{ season.description}} : {{ season.year }}</p>
             {%  for episode in episode %}
                <ul>
-                   <a href="{{ path('episode', {'id': episode.id }) }}"><li>{{ episode.title }}</li></a>
+                   <li>{{ episode.title }}</li>
                </ul>
             {%  endfor %}
         </div>

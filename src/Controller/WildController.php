@@ -144,4 +144,26 @@ class WildController extends AbstractController
         ]);
     }
 
+    /**
+     * Getting a program with a formatted slug for title and can see all episode from season
+     *
+     * @param int $id The id season
+     * @Route("/episode/{id}",  name="episode")
+     * @return Response
+     */
+    public function showEpisode (Season $season): Response
+    {
+
+        $program = $season->getProgram();
+
+        $episode = $season->getEpisodes();
+
+
+        return $this->render('wild/Episode.html.twig', [
+            'program' => $program,
+            'season' => $season,
+            'episode' => $episode
+        ]);
+    }
+
 }
