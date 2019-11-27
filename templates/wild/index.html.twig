@@ -12,6 +12,20 @@
     {% else %}
         Aucune série trouvée.
     {% endfor %}
+
+    {{ form_start(formS) }}
+
+    {{ form_row(formS.searchField) }}
+
+    <button type="submit" name="btnSearch">Rechercher</button>
+
+    {{ form_end(formS) }}
+
+
+
+    <a href="{{ path('add_category') }}">
+        Ajouter une catégorie
+    </a></br>
     <a href="{{ path('app_index') }}">
         Retour à l'accueil
     </a>
