@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}{{ slug }}{% endblock %}
+{% block title %}{{ program.title }}{% endblock %}
 
 {% block body %}
 
@@ -9,17 +9,20 @@
             <h1 class="mt-0">{{ program.title }}</h1>
             <p>{{ program.summary }}</p>
             <p>Categorie : {{ program.category.name }}</p>
-            {%  for season in season %}
-                <a href ="{{ path('show_episode',{id : season.id}) }}"><p>{{ season.description}} : {{ season.year }}/{{season.id}}</p></a>
-            {%  endfor %}
+            <p>{{ season.description}} : {{ season.year }}</p>
+
+               <ul>
+                   <li>Titre de l'épisode : {{ episode.title }}</li>
+                   <li>Synopsis :{{ episode.synopsis }}</li>
+               </ul>
+
         </div>
     </div>
-    <!--<a href="javascript:history.back()">Page Précédente</A>-->
     <form>
         <input type="button" value="Page Précédente" onclick="history.back()">
     </form>
 
-    <a href="{{ path('wild_index')}}">
+    <a href="{{ path('wild_index') }}">
         Retour à l'accueil
     </a>
 

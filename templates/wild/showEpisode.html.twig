@@ -12,11 +12,14 @@
             <p>{{ season.description}} : {{ season.year }}</p>
             {%  for episode in episode %}
                <ul>
-                   <li>{{ episode.title }}</li>
+                   <a href="{{ path('episode', {'id': episode.id }) }}"><li>{{ episode.title }}</li></a>
                </ul>
             {%  endfor %}
         </div>
     </div>
+    <form>
+        <input type="button" value="Page Précédente" onclick="history.back()">
+    </form>
 
     <a href="{{ path('wild_index') }}">
         Retour à l'accueil
