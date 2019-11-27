@@ -14,6 +14,10 @@
             {%  endfor %}
         </div>
     </div>
+    <!--<a href="javascript:history.back()">Page Précédente</A>-->
+    <form>
+        <input type="button" value="Page Précédente" onclick="history.back()">
+    </form>
 
     <a href="{{ path('wild_index')}}">
         Retour à l'accueil

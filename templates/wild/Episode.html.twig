@@ -10,13 +10,17 @@
             <p>{{ program.summary }}</p>
             <p>Categorie : {{ program.category.name }}</p>
             <p>{{ season.description}} : {{ season.year }}</p>
-            {%  for episode in episode %}
+
                <ul>
-                   <li>{{ episode.title }}</li>
+                   <li>Titre de l'épisode : {{ episode.title }}</li>
+                   <li>Synopsis :{{ episode.synopsis }}</li>
                </ul>
-            {%  endfor %}
+
         </div>
     </div>
+    <form>
+        <input type="button" value="Page Précédente" onclick="history.back()">
+    </form>
 
     <a href="{{ path('wild_index') }}">
         Retour à l'accueil
