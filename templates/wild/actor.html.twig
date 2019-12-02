@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ actor.name }}{% endblock %}
+
+{% block body %}
+
+    <div class="media">
+            <ul>
+                <h1>Acteurs :</h1>
+                    <p>{{ actor.name }}</p>
+                    <p>Jouant dans les séries suivantes : </p>
+                {% for program in programs %}
+                    <a href="/show/{{ program.title |lower|replace ({' ': "-"})}}"><li>{{ program.title }}</li></a>
+                {% endfor %}
+
+            </ul>
+    </div>
+    <form>
+        <input type="button" value="Page Précédente" onclick="history.back()">
+    </form>
+
+    <a href="{{ path('wild_index')}}">
+        Retour à l'accueil
+    </a>
+
+{% endblock %}

@@ -2,12 +2,14 @@
 // src/Controller/WildController.php
 namespace App\Controller;
 
+use App\Entity\Actor;
 use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Form\CategoryType;
 use App\Form\ProgramSearchType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -79,6 +81,7 @@ class WildController extends AbstractController
             ->getRepository( Season::Class)
             ->findBy( ['program'=>$program],
                 ['id'=> "ASC"]);
+        $actors = $program->getActors();
 
         if (!$program) {
             throw $this->createNotFoundException(
@@ -89,7 +92,8 @@ class WildController extends AbstractController
         return $this->render('wild/show.html.twig', [
             'program' => $program,
             'slug'  => $slug,
-            'season' => $seasons
+            'season' => $seasons,
+            'actors' => $actors,
         ]);
     }
 
@@ -133,11 +137,6 @@ class WildController extends AbstractController
         }
 
         if ($categoryName) {
-
-            /*$categoryName = preg_replace(
-                '/-/',
-                ' ', ucwords(trim(strip_tags($slug)), "-")
-            );*/
 
             $category = $this->getDoctrine()
                 ->getRepository(Category::class)
@@ -187,6 +186,27 @@ class WildController extends AbstractController
             'program' => $program,
             'season' => $season,
             'episode' => $episode
+        ]);
+    }
+
+    /**
+     * Getting a actor with program where he is playing
+     *
+     * @param string $actor
+     * @Route("/actor/{name}",  name="actor")
+     * @ParamConverter("actor", options={"mapping": {"name"="name"}})
+     * @return Response
+     */
+    public function showByActor (Actor $actor): Response
+    {
+            $programs = $actor->getprograms();
+
+
+
+        return $this->render('wild/actor.html.twig', [
+            'actor' => $actor,
+            'programs' => $programs
+
         ]);
     }
 
