@@ -12,9 +12,15 @@
             {%  for season in season %}
                 <a href ="{{ path('show_episode',{id : season.id}) }}"><p>{{ season.description}} : {{ season.year }}/{{season.id}}</p></a>
             {%  endfor %}
+            <ul>
+                <li>Acteurs :</li>
+                {% for actor in actors %}
+                    <a href="{{ path('actor',{name : actor.name}) }}"><p>{{ actor.name }}</p></a>
+
+                {% endfor %}
+            </ul>
         </div>
     </div>
-    <!--<a href="javascript:history.back()">Page Précédente</A>-->
     <form>
         <input type="button" value="Page Précédente" onclick="history.back()">
     </form>
