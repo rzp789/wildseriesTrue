@@ -63,6 +63,8 @@ class Category
             $this->programs[] = $program;
             $program->setCategory($this);
         }
+
+        return $this;
     }
 
     /**
