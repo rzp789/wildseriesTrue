@@ -51,7 +51,7 @@ class WildController extends AbstractController
                 ->findBy(['title' => mb_strtolower($data)]);
         }
 
-        return $this->render('wild/index.html.twig', ['programs' => $programs,'programs' => $programs,
+        return $this->render('wild/index.html.twig', ['programs' => $programs,
 
             'formS' => $formS->createView()]);
 
