@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Season;
 use App\Form\SeasonType;
 use App\Repository\SeasonRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,6 +27,7 @@ class SeasonController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/new", name="season_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -49,6 +51,7 @@ class SeasonController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="season_show", methods={"GET"})
      */
     public function show(Season $season): Response
@@ -59,6 +62,7 @@ class SeasonController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}/edit", name="season_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Season $season): Response
@@ -79,6 +83,7 @@ class SeasonController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="season_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Season $season): Response
