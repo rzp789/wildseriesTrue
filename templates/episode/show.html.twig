@@ -37,11 +37,12 @@
         {% endif %}
         </div>
     </div>
-
+    {% if is_granted('ROLE_SUBSCRIBER') or is_granted('ROLE_ADMIN')  %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
     {{ form_end(form) }}
+    {% endif %}
 
     <a href="{{ path('episode_index') }}">back to list</a>
 
