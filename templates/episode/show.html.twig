@@ -21,10 +21,40 @@
             </tr>
         </tbody>
     </table>
+    <h1>Commentaires :</h1>
+    <div class="card" >
+        {% if comments is defined %}
+        {% for comment in comments %}
+
+                <div class="card-body">
+
+                    <h6 class="card-subtitle mb-1 mt-3 ml-3 text-muted">noté : {{ comment.rate }}</h6>
+                    <p class="card-text ml-3 mb-3 mr-2"><span >Auteur : </span>{% set user = comment.getAuthor %} {{ user.getEmail }}</p>
+                    <p class="card-text ml-3 mb-3 mr-2"><span >Commentaire : </span>{{ comment.comment }}</p>
+                </div>
+            <hr>
+            {% else %}
+                <div class="card-body">
+                    <h5>Pour le moment, aucun commentaire.</h5>
+                </div>
+            <hr>
+
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div>
+        {% if is_granted('ROLE_SUBSCRIBER') or is_granted('ROLE_ADMIN')  %}
+            <p>Ecrire un nouveau commentaire : </p>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn">{{ button_label|default('envoyer commentaire') }}</button>
+            {{ form_end(form) }}
+        {% endif %}
+    </div>
 
     <a href="{{ path('episode_index') }}">back to list</a>
 
-    <a href="{{ path('episode_edit', {'slug': episode.slug}) }}">edit</a>
+    <a href="{{ path('episode_edit', {'id': episode.id}) }}">edit</a>
 
     {{ include('episode/_delete_form.html.twig') }}
 {% endblock %}
