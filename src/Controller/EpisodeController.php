@@ -10,6 +10,7 @@ use App\Form\EpisodeType;
 use App\Repository\CommentRepository;
 use App\Repository\EpisodeRepository;
 use App\Service\Slugify;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,6 +32,7 @@ class EpisodeController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/new", name="episode_new", methods={"GET","POST"})
      */
     public function new(Request $request, Slugify $slugify): Response
@@ -83,11 +85,12 @@ class EpisodeController extends AbstractController
         }
         return $this->render('episode/show.html.twig', [
             'episode' => $episode,'form' => $form->createView(),
-            'comments' => $comments
+            'comments' => $comments, 'user' => $this->getUser()
         ]);
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}/edit", name="episode_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Episode $episode,Slugify $slugify): Response
@@ -109,6 +112,7 @@ class EpisodeController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="episode_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Episode $episode): Response

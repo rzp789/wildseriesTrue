@@ -15,7 +15,7 @@
             <ul>
                 <li>Acteurs :</li>
                 {% for actor in actors %}
-                    <a href="{{ path('actor',{name : actor.name}) }}"><p>{{ actor.name }}</p></a>
+                    <a href="{{ path('actor',{name : actor.slug}) }}"><p>{{ actor.name }}</p></a>
 
                 {% endfor %}
             </ul>

@@ -12,6 +12,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/actor">Liste des Acteurs <span class="sr-only">(current)</span></a>
                 </li>
+                {% if is_granted ('ROLE_ADMIN')%}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Gérance
@@ -22,6 +23,7 @@
                     <a class="nav-link" href="{{ path('episode_index')}}">Ajouter/modifier/supprimer Episode <span class="sr-only">(current)</span></a>
                 </div>
                 </li>
+                {% endif %}
             </ul>
             {% if app.user %}
                 {{ app.user.email }}

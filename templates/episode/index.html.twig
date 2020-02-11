@@ -11,7 +11,9 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Synopsis</th>
+                {% if is_granted ('ROLE_ADMIN')%}
                 <th>actions</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -20,10 +22,13 @@
                 <td>{{ episode.id }}</td>
                 <td>{{ episode.title }}</td>
                 <td>{{ episode.synopsis }}</td>
+                {% if is_granted ('ROLE_ADMIN')%}
                 <td>
+
                     <a href="{{ path('episode_show', {'id': episode.id}) }}">show</a>
                     <a href="{{ path('episode_edit', {'id': episode.id}) }}">edit</a>
                 </td>
+                {% endif %}
             </tr>
         {% else %}
             <tr>
@@ -32,6 +37,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {% if is_granted ('ROLE_ADMIN')%}
     <a href="{{ path('episode_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
