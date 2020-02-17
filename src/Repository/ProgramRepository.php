@@ -18,6 +18,17 @@ class ProgramRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Program::class);
     }
+    public function findAllWithCategories()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->innerJoin('p.category', 'c' )
+            ->innerJoin('p.actors', 'a' )
+            ->addSelect('c')
+            ->addSelect('a')
+            ->getQuery();
+
+        return $qb->execute();
+    }
 
     // /**
     //  * @return Program[] Returns an array of Program objects

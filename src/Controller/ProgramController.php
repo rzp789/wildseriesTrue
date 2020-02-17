@@ -22,8 +22,11 @@ class ProgramController extends AbstractController
      */
     public function index(ProgramRepository $programRepository): Response
     {
+        //$program = $programRepository->findAllWithCategories();
+        //dd($program);
+
         return $this->render('program/index.html.twig', [
-            'programs' => $programRepository->findAll(),
+            'programs' => $programRepository->findAllWithCategories(),
         ]);
     }
 
