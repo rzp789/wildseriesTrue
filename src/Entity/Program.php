@@ -5,9 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository")
+ * @UniqueEntity("title",
+ *     message="ce titre existe déjà")
  */
 class Program
 {
@@ -18,12 +22,14 @@ class Program
      */
     private $id;
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=false, unique=true)
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=false)
+     * @Assert\NotBlank(message="Ne me laisse pas tout vide")
+     * @Assert\Length(max="255", maxMessage="Le sommaire saisie {{ value }} est trop longue, elle ne devrait pas dépasser {{ limit }} caractères")
      */
     private $summary;
 
