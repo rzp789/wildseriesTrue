@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes commentaires{% endblock %}
+
+{% block body %}
+    <h1>Comments Index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom episode<th>
+            <th>Contenu commentaire</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if comments is defined %}
+        {% for comment in comments %}
+            <tr>
+                <td>{{ comment.episode.getTitle }}</td>
+                <td>{{ comment.comment }}</td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}
