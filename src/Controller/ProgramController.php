@@ -46,6 +46,8 @@ class ProgramController extends AbstractController
             $entityManager->persist($program);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Félicitation une nouvelle série a bien été créée.');
+
             return $this->redirectToRoute('program_index');
         }
 
@@ -78,6 +80,8 @@ class ProgramController extends AbstractController
             $program->setSlug($slugify->generate($program->getTitle()));
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'La série a bien été modifiée.');
+
             return $this->redirectToRoute('program_index');
         }
 
@@ -97,6 +101,8 @@ class ProgramController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($program);
             $entityManager->flush();
+
+            $this->addFlash('danger', 'La série a bien été supprimée.');
         }
 
         return $this->redirectToRoute('program_index');
