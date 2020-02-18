@@ -11,6 +11,7 @@ lien video quete 16 : https://www.loom.com/share/a0a44ee665e34a259044434243d8050
 lien video quete 18 : https://www.loom.com/share/bbc93ae083554aa08afe3bde6d8d0a6d. <br/>
 lien video quete 19 : https://www.loom.com/share/115da04b446e4a759b59c5601cb455e4 <br/>
 lien video quete 20 : https://www.loom.com/share/235535a3b5574e218305d9551f218449 <br>
-lien video quete 21 : https://www.loom.com/share/f3170ca279e944aba54a892e63972bfa
+lien video quete 21 : https://www.loom.com/share/f3170ca279e944aba54a892e63972bfa <br>
+lien video quête 23 : https://www.loom.com/share/6462329676c3483281d66fa12322e9da
 
 
